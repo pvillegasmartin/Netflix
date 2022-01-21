@@ -1,15 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Film detail{% endblock %}
+{% block title %}Film details{% endblock %}
 
 {% block content %}
 
-    <div class="container">
-        <form action="" method="post">
-            <label for="text">Text: </label>
-            <input type="text" id="text" name="text" /><br>
-            <input type="submit" id="send-signup" name="signup" value="Registrar" />
-        </form>
+<!-- {'Title': 'Superman, Spiderman or Batman', 'Year': '2011', 'imdbID': 'tt2084949', 'Type': 'movie', 
+'Poster': 'https://m.media-amazon.com/images/M/MV5BMjQ4MzcxNDU3N15BMl5BanBnXkFtZTgwOTE1MzMxNzE@._V1_SX300.jpg'} -->
+
+
+    <div class="card" style="width: 18rem;">
+        <img src={'movie.Poster'} class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">
+                <h1>{{movie['Title']}}</h1>
+                <h3>{{movie['Year']}}</h3>
+                <a href={`https://www.imdb.com/title/${movie.imdbID}/`} target=_blank>IMDB</a>
+            </p>
+        </div>
     </div>
 
+    <form method="POST">
+        <h3>Post a Comment</h3>
+        <div class="form-group">
+            <label for="comment">Message</label>
+            <textarea name="comment" id="message" class="form-control" placeholder="Comment"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 {% endblock %}
