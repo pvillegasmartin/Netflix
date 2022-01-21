@@ -19,6 +19,10 @@
         </div>
     </div>
 
+    {% for comment in all_comments.data %}
+    <p>TEST P {{comment.text}}</p>
+    {% endfor %}
+
     <form method="POST">
         <h3>Post a Comment</h3>
         <div class="form-group">
