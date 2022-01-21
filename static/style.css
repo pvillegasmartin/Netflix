@@ -24,11 +24,7 @@ body{
     transition: transform 450ms;
 }
 .imagesize{
-    width: 100%;
-    object-fit: contain;
-    max-height: 100px;
-    margin-right: 10px;
-    transition: transform 450ms;
+    flex-shrink: 0;
 }
 
 .row_posters{
@@ -149,4 +145,53 @@ body{
     padding-top: 1rem;
     font-size: 1rem;
     height: 180px;
+}
+
+.film_details_page {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    margin: 0 55px 0 55px;
+
+}
+
+.card_film {
+    background-color: gainsboro;
+    color: black;
+    position:inherit;
+}
+
+.comments {
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 3px 25px;
+    padding: 10px;
+    color: white;
+    max-width: 500px;
+}
+
+.comment-date {
+    font-size: 65%;
+    color: firebrick;
+}
+
+.form {
+    color: white;
+    margin: 15px 25px;
+}
+
+.form-control {
+    max-width: 768px;
+}
+
+
+.flex{
+    display:flex;
+    padding-top:100px;
+    margin: 50px 0 50px 0;
+}
+
+.right{
+    min-width: -webkit-fill-available;
 }

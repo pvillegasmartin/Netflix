@@ -44,11 +44,12 @@ if __name__ == '__main__':
             requests.post(f'http://127.0.0.1:5000/{imdbid}',data=data)
             return redirect(f'http://127.0.0.1:5000/movie/{imdbid}')
 
-        try:
-            req = requests.get(f'http://127.0.0.1:5000/{imdbid}')
+        req = requests.get(f'http://127.0.0.1:5000/{imdbid}')
+        if req.status_code == 404:
+            all_comments = {'data': []}
+        else:
             all_comments = json.loads(req.content)
-        except:
-            all_comments = {'data':None}
+
 
         return render_template("film_detail.html", all_comments=all_comments, movie=movie)
 
