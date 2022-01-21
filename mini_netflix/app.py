@@ -14,9 +14,9 @@ def about():
 def imageid():
     return render_template("imageid.html")
 
-@app.route("/webscraping")
+@app.route("/TVshows")
 def webscraping():
-    return render_template("webscraping.html")
+    return render_template("TVshows.html")
 
 if __name__ == "__main__":
     app.run(debug=True) 
