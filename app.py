@@ -33,20 +33,23 @@ if __name__ == '__main__':
 
     @app.route("/movie/<imdbid>", methods=["GET","POST"])
     def film_detail(imdbid):
-        print('a')
+
         URL = f'http://www.omdbapi.com/?i={imdbid}&apikey=fb4d7ea8'
-        print('b')
         r = requests.get(URL)
         movie = r.json()
-        print('c')
-        req = requests.get(f'http://127.0.0.1:5000/{imdbid}')
-        all_comments = json.loads(req.content)
-        print('d')
+        try:
+            req = requests.get(f'http://127.0.0.1:5000/{imdbid}')
+            all_comments = json.loads(req.content)
+        except:
+            all_comments = []
 
         if request.method == 'POST':
+            print('a')
             text = request.form.get('text')
-            data = {'text':text, 'movie_id':imdbid}
-            requests.post('http://127.0.0.1:5000/',data=data)
+            print(text)
+            data = {'text':text}
+            requests.post(f'http://127.0.0.1:5000/{imdbid}',data=data)
+            print('c')
 
         return render_template("film_detail.html", all_comments=all_comments, movie=movie)
 

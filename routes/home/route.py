@@ -13,15 +13,6 @@ class HomeRoute(Resource):
         comments = [comment.to_json() for comment in comments]
         return {'data':comments}
 
-    def post(self):
-
-        movie_id = request.form['movie_id']
-        text = request.form['text']
-        comment = Comments(movie_id=movie_id, text=text)
-        db.session.add(comment)
-        db.session.commit()
-        return {'data': comment.to_json()}
-
 
 class FilmWithId(Resource):
     def get(self, movie_id):
@@ -31,6 +22,14 @@ class FilmWithId(Resource):
             return {'data':comments_film}
         else:
             return {'data':'Not Found'},404
+
+    def post(self, movie_id):
+
+        text = request.form['text']
+        comment = Comments(movie_id=movie_id, text=text)
+        db.session.add(comment)
+        db.session.commit()
+        return {'data': comment.to_json()}
 
 class FilmCommentWithId(Resource):
     def put(self, comment_id):
